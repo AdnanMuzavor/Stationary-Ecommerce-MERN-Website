@@ -1,38 +1,36 @@
 const express= require("express");
 const app=express();
+
+//For using cookies for storing token
 const cookieparser=require("cookie-parser");
 app.use(cookieparser());
 
-// app.use(express.bodyParser({limit:'50mb'}));
-
-//For uploadinf files on momgodb
-
-// const fileupload=require("express-fileupload");
-// app.use(fileupload());
 
 //Using enV to secure your details
 const dotenv=require("dotenv");
 dotenv.config({path:'./.env'});
+
+//Getting DB and port no from env
 const DB=process.env.DATABASE;
-const port=process.env.PORT || 4000;
+const port=process.env.PORT || 6000;
 
 //To connect with mongodb online
 
 require("./db/conn");
 
-//Requiring model
-
-const User=require("./models/userschema");
+//To make browser accept json files
+app.use(express.json());
 
 //Using routers in place of get functions below
-app.use(express.json());
 app.use(require("./routers/auth"));
+
 
 //For hosting purpose
 if(process.env.NODE_ENV === "production"){
     app.use(express.static("client/build"))
 }
 
+//Listening to backend port
 app.listen(port,()=>{
     console.log(`Listening to port number: ${port}`);
 })
