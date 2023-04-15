@@ -6,7 +6,7 @@ import {Link, NavLink} from "react-router-dom";
 import OrderSteps from "./OrderStepsComp";
 import { useSelector, useDispatch } from "react-redux";
 import { detailsOrder, payOrder, payOrderNP } from "../actions/OrderActions";
-import { PayPalButton } from "react-paypal-button-v2";
+// import { PayPalButton } from "react-paypal-button-v2";
 import Loadingcomp from "./Loadingcomp";
 import ErrMessg from "./ErrMessDisplay";
 import {CART_EMPTY} from "../constants/OrderConstants";
@@ -282,10 +282,10 @@ const UserDetails = useSelector((state) => state.UserDetails);
                   <>
                     {errorPay ? <ErrMessg>{errorPay}</ErrMessg> : null}
                     {loadingPay ? <Loadingcomp></Loadingcomp> : null}
-                    <PayPalButton
+                    {/* <PayPalButton
                       amount={order.totalprice}
                       onSuccess={successPaymentHandler}
-                    ></PayPalButton>
+                    ></PayPalButton> */}
                   </>
                   
                   

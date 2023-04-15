@@ -12,7 +12,7 @@ dotenv.config({path:'./.env'});
 
 //Getting DB and port no from env
 const DB=process.env.DATABASE;
-const port=process.env.PORT || 6000;
+const port=process.env.PORT || 5000;
 
 //To connect with mongodb online
 
