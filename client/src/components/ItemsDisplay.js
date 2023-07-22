@@ -16,6 +16,7 @@ const Userdisplay = ({
   id,
   adminaccess,
   home,
+  type
 }) => {
   const history=useHistory();
   const dispatch=useDispatch();
@@ -27,7 +28,7 @@ const Userdisplay = ({
   }
   return (
     <>
-      <div
+      {/* <div
         className="dcont container col-10 col-lg-3 col-md-3 ms-1 me-1 mb-2 mt-2 ms-4 me-4 "
         data-aos="fade-up"
       >
@@ -75,7 +76,7 @@ const Userdisplay = ({
             </>
           ) : null}
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
