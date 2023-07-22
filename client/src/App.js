@@ -36,6 +36,7 @@ import Payment from "./components/Payment";
 import AddItem from "./components/AddItemScreen";
 import UpdateItems from "./components/UpdateItemDetails(Admin)";
 import EditItemDetails from "./components/EditItemDetails(Admin)";
+import DisplaySingleItem from "./components/ItemComponents/DisplaySingleItem";
 
 export const usercontext = createContext();
 
@@ -93,7 +94,7 @@ function App() {
         </Route>
         <Route
           path="/gettheitem/:id"
-          render={(props) => <OnlyitemRedux {...props} />}
+          render={(props) => <DisplaySingleItem {...props} />}
         />
         <Route
           path="/cart/:id?"

@@ -22,23 +22,23 @@
   height: 14rem;
   border-radius: 0.6rem;
 }
-.Link{
+.Link {
   text-decoration: none;
 }
-.Link:hover{
+.Link:hover {
   color: #fff !important;
   text-decoration: none;
 }
-.newcontainer:hover{
-   background-color: gray;
-   border: 2px solid black;
-   color: #ffffff !important;
+.newcontainer:hover {
+  background-color: gray;
+  border: 2px solid black;
+  color: #ffffff !important;
 }
 .right_inner_cont {
   border-radius: 0.6rem;
   cursor: pointer;
 }
-.right_inner_cont:hover{
+.right_inner_cont:hover {
   background-color: gray;
   border: 2px solid black;
   color: #ffffff;
@@ -121,13 +121,13 @@
 }
 
 /*Categoy panel*/
-.category_wrap{
+.category_wrap {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #851e3e;
 }
-.category_item{
+.category_item {
   border: 2px solid gray;
   border-radius: 2rem;
   padding: 0.8rem;
@@ -144,12 +144,12 @@
   animation: changeme 3s infinite alternate;
 }
 @keyframes changeme {
- 50%{
-  background-color: gray;
-  color: #fff;
- }
+  50% {
+    background-color: gray;
+    color: #fff;
+  }
 }
-.category_item img{
+.category_item img {
   border-radius: 0.8rem;
 }
 ::-webkit-scrollbar {
@@ -907,4 +907,204 @@ label {
 .fa-pencil-square-o {
   color: black !important;
   background-color: black !important;
+}
+
+/*Only Item Component*/
+/*Label showing rating*/
+.ratinglabel {
+  background-color: #388e3c;
+  color: #fff;
+  font-size: small;
+  padding: 0.1rem;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  border-radius: 0.5rem;
+  width: 3rem;
+}
+/*Rating count displayer*/
+.ratings {
+  font-weight: 400;
+  color: gray;
+}
+/*Selling rate*/
+.rate {
+  font-size: larger;
+  font-weight: bolder;
+  padding: 0.3rem;
+}
+/*Original rate*/
+.discountrate {
+  font-size: medium;
+  padding: 0.3rem;
+  text-decoration-line: line-through;
+}
+/*Offer display*/
+.offper {
+  padding: 0.3rem;
+}
+/*Allign things like specs*/
+.flexer {
+  display: flex !important;
+  justify-content: flex-start !important;
+}
+/*Seller details*/
+.seller {
+  color: #2874f0;
+}
+
+.sellerrating {
+  background-color: #2874f0;
+  color: #fff;
+  font-size: small;
+  padding: 0.1rem;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  border-radius: 0.5rem;
+  width: 3rem;
+}
+/*Assurance sticker alignment*/
+.sticker {
+  margin: 0.4rem !important;
+}
+/*Header os specs*/
+.header {
+  font-size: 2rem;
+  padding: 0.2rem;
+  margin: 0.2rem;
+  font-weight: bolder;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+/*Subheader in specs*/
+.subheader {
+  font-size: 1.8rem;
+  font-weight: 500;
+  border-bottom-style: dashed;
+  border-bottom-color: gray;
+}
+/*To make sttributes appear lighter*/
+.lightwt {
+  font-weight: lighter;
+}
+/*Spacing between attributes*/
+.spacing {
+  padding: 0.4rem;
+}
+/*Show box for specs*/
+.shadowbox {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 1rem;
+}
+/*Buttons below image*/
+.btnimg {
+  margin: 0.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ff9f00;
+  color: #fff;
+  font-weight: bold;
+  border: transparent;
+  border-radius: 0.3rem;
+  height: 3rem;
+}
+/*Wishlist icon styling*/
+.wishlist {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 0.2rem;
+  border-radius: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.8rem;
+}
+/*Remove styles of default button*/
+.filterstyle {
+  border: none;
+  background-color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  color: #2874f0;
+}
+
+/*To allign at dpace between*/
+.aligner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ratebtn {
+  color: black;
+  width: 10rem;
+  display: flex;
+  justify-content: center;
+}
+
+/*To align graph content in one line */
+.graphalign {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.alignrating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+/*graph bar*/
+.graph {
+  height: 0.5rem;
+  border: 1px solid black;
+  width: 100%;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+.filler {
+  position: relative;
+  /* background-color: #388e3c; */
+  width: 110%;
+
+  border-radius: 0.1rem;
+}
+
+/*Content near graph*/
+.graphcontent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*Circular reviews CSS*/
+.outercircle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  background-color: rgb(206, 205, 205);
+  margin: 0.3rem;
+  background: linear-gradient(to right, #fff 30%, red 70%);
+}
+
+.innercircle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  background-color: #ffff;
+}
+
+.circlewrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

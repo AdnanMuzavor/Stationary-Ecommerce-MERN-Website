@@ -11,6 +11,7 @@ import ItemCompT1 from "./ItemComponents/ItemCompT1";
 import ItemCompT2 from "./ItemComponents/ItemCompT2";
 import Header1 from "./Header/Header1";
 import CategoryCard from "./ItemComponents/CategoryCard";
+
 const Home = () => {
   const dispatch = useDispatch();
   //Getting products from redux
@@ -202,7 +203,7 @@ const Home = () => {
   return (
     <>
 
-    {/*Category Cards*/}
+      {/*Category Cards*/}
       <section className="row category_wrap">
         {category.map((e) => {
           return (
@@ -269,6 +270,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+   
     </>
   );
 };
