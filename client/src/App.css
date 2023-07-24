@@ -8,7 +8,24 @@
 .newtopcontainer {
   justify-content: center;
 }
+/*Cart items UI update*/
+.cart_item_wrapper{
+   border: 2px solid gray;
+   border-radius: 0.6rem;
+   height: 18rem;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   margin-bottom: 1rem;
+   
+} 
+.cartitems{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+
+}
 .newcontainer {
   border: 2px solid rgb(177, 173, 173);
   border-radius: 0.4rem;
@@ -666,8 +683,8 @@ input[type="submit"]:hover {
 }
 
 .item {
-  border: 2px solid rgb(0, 0, 0);
-  color: black;
+  /* border: 2px solid rgb(0, 0, 0);
+  color: black; */
 }
 .bnone {
   border: none;

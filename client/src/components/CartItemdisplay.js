@@ -13,7 +13,7 @@ const OrderedItem = ({
   return (
     <>
       <div
-        className="dcont container col-10 col-lg-5 col-md-5 ms-2 me-2 mb-2 mt-2 ms-2 me-2 "
+        className="dcont container col-8 col-lg-5 col-md-5 ms-2 me-2 mb-2 mt-2 ms-2 me-2 "
         data-aos="fade-up"
       >
         <div className="row">

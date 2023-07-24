@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import styles from "../../components/ItemComponents/components.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import ph1 from "../../Data/Products/ph1.webp";
-import ph2 from "../../Data/Products/ph2.webp";
-import ph3 from "../../Data/Products/ph3.webp";
-import ph4 from "../../Data/Products/ph4.webp";
 import coin from "../../Data/sticker/coin.png";
 import CarouselComp from "../CommonComponents/Carousel";
 import { useEffect } from "react";
 import Loadingcomp from "../Loadingcomp";
 import ErrMessg from "../ErrMessDisplay";
+import { Link } from "react-router-dom/cjs/react-router-dom";
 // Import the FontAwesomeIcon component
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -17,6 +14,7 @@ import {
   reviewByUser,
   ReviewsProduct,
 } from "../../actions/productActions";
+
 // import the icons you need
 import {
   faHeart,
@@ -29,6 +27,7 @@ import ReviewComp from "../Reviewcontainer";
 const DisplaySingleItem = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
+
   //To fetch this product details
   const productdetails = useSelector((state) => state.productdetails);
   const {
@@ -45,9 +44,7 @@ const DisplaySingleItem = (props) => {
   const [productreviews, setproductreviews] = useState([]);
   const [reviewsloading, setreviewsloading] = useState(false);
 
-  //const [product, setproduct] = useState(props.product);
-
-  //Specs to be displayed as highlights
+  //Specs to be displayed as highlights [COMMON]
   const [highlights, sethighlights] = useState([
     "Good quality | Easy to carry | harmless",
     "Suitable for all ages",
@@ -56,7 +53,7 @@ const DisplaySingleItem = (props) => {
     "Recyclable | Green Product",
   ]);
 
-  //Seller policies displayed
+  //Seller policies displayed [common]
   const [sellerpolicies, setsellerpolicies] = useState([
     "7 Days Replacement Policy",
     "GST invoice available",
@@ -68,15 +65,17 @@ const DisplaySingleItem = (props) => {
   //To display graphs
   const [ratings, setratings] = useState([]);
   const [ratingsload, setratingsload] = useState(false);
+
+  //Generate and append ratings to a product randomly
   const RatingFinder = () => {
-     setratings([])
-      for (var rating = 1; rating <= 10; rating += 2) {
-        setratings((prev) => [
-          ...prev,
-          { rating: rating, percentage: Math.floor(Math.random() * 100 + 10) },
-        ]);
-      }
-    
+    setratings([]);
+    for (var rating = 1; rating <= 10; rating += 2) {
+      setratings((prev) => [
+        ...prev,
+        { rating: rating, percentage: Math.floor(Math.random() * 100 + 10) },
+      ]);
+    }
+
     setratingsload(false);
     console.log(ratings);
   };
@@ -95,13 +94,21 @@ const DisplaySingleItem = (props) => {
     dispatch(ReviewsProduct());
     setreviewsloading(true);
     setTimeout(() => {
+      console.log("Executing: getting orduct reviws");
       setproductreviews(
         reviews.filter((e) => {
-          return e.productid === productid;
+          return e.productid !== productid;
         })
       );
 
       setreviewsloading(false);
+      console.log("Executing: getting orduct reviws Done");
+      setTimeout(() => {
+        console.log("printing");
+        console.log(productreviews);
+      }, 1500);
+
+
     }, 1000);
     setTimeout(() => {
       RatingFinder();
@@ -109,7 +116,8 @@ const DisplaySingleItem = (props) => {
     //console.log(reviews)
   }, []);
 
-  //Review Handling
+  //Review Handling [User Input For Review]
+
   //to fetch user detaila to pre fill some in fo for review
   const UserDetails = useSelector((state) => state.UserDetails);
   const { loading, error, UserInfo } = UserDetails;
@@ -119,6 +127,7 @@ const DisplaySingleItem = (props) => {
   const [useremail, setuseremail] = useState(UserInfo ? UserInfo.email : "");
   const [userreview, setuserreview] = useState("");
   const [userrating, setuserrating] = useState("");
+
   const postReview = (e) => {
     e.preventDefault();
     dispatch(
@@ -128,13 +137,23 @@ const DisplaySingleItem = (props) => {
       alert("Fill All The Data!");
       return;
     }
-
-    alert("review posted");
+    setproductreviews((prev) => [
+      ...prev,
+      {
+        userreview: userreview,
+        username: username,
+        useremail: useremail,
+        userrating: userrating,
+        productid: productid,
+      },
+    ]);
+    console.log("UPDATED"+productreviews)
+    //alert("review posted");
     setuserrating("");
     setuserreview("");
-    setTimeout(() => {
-      dispatch(ReviewsProduct());
-    }, 3000);
+    // setTimeout(() => {
+    //   dispatch(ReviewsProduct());
+    // }, 1000);
   };
 
   return (
@@ -168,6 +187,7 @@ const DisplaySingleItem = (props) => {
                 img4={product.img}
                 ht={800}
               />
+              {/*Stock Summary Part*/}
               <span className="d-flex justify-content-around">
                 <div className="writer">
                   <strong>Stock:</strong>
@@ -195,6 +215,7 @@ const DisplaySingleItem = (props) => {
                   </select>
                 </div>
               </span>
+              {/*Add to card and related buttons */}
               <div className={`${styles.buttonsarea}`}>
                 <div className={`row d-flex justify-content-center`}>
                   <button
@@ -304,7 +325,7 @@ const DisplaySingleItem = (props) => {
                   <button
                     className={`${styles.filterstyle} ${styles.shadowbox} ${styles.ratebtn} text-center`}
                   >
-                    Priduct Performance
+                    Product Performance
                   </button>
                 </div>
                 <div className={` row ${styles.aligrating}`}>
@@ -373,46 +394,135 @@ const DisplaySingleItem = (props) => {
                         );
                       })}
                   </div>
-                  {/*Review circles */}
                 </div>
               </div>
             </div>
           </div>
-          {UserInfo ? (
-        <div className={`${styles.shadowbox} ${styles.comment_cont}`}>
-          <h3 className="text-center">Customer Reviews</h3>
-          <div className="row reviewpart mt-2">
-            {reviewloading ? (
-              <Loadingcomp></Loadingcomp>
-            ) : reviewerror ? (
-              <ErrMessg>{reviewerror}</ErrMessg>
-            ) : (
-              reviews
-                .filter((ele) => {
-                  return ele.productid === productid;
-                })
-                .map((ele) => {
-                  return (
-                    <>
-                      <ReviewComp
-                        key={ele._id}
-                        name={ele.username}
-                        review={ele.userreview}
-                        userrating={ele.userrating}
-                        useremail={ele.useremail}
-                        user={UserInfo.email}
-                      />
-                    </>
-                  );
-                })
-              // }).length===0?<h3 className="text-center">No Reviews,Be the first on e to write the review!</h3>:null
-            )}
+          {/* For form filling */}
+
+          <div className="row d-flex justify-content-center">
+            {UserInfo ? (
+              <div
+                className={`${styles.shadowbox} ${styles.comment_cont2} ${styles.review_container} col-md-7 col-lg-7 col-10`}
+              >
+                <h3 className="text-center">Customer Reviews</h3>
+                <div className="row reviewpart mt-2">
+                  {reviewloading ? (
+                    <Loadingcomp></Loadingcomp>
+                  ) : reviewerror ? (
+                    <ErrMessg>{reviewerror}</ErrMessg>
+                  ) : (
+                    productreviews
+                      .map((ele) => {
+                        return (
+                          <>
+                            <ReviewComp
+                              key={ele._id}
+                              name={ele.username}
+                              review={ele.userreview}
+                              userrating={ele.userrating}
+                              useremail={ele.useremail}
+                              user={UserInfo.email}
+                            />
+                          </>
+                        );
+                      })
+                    // }).length===0?<h3 className="text-center">No Reviews,Be the first on e to write the review!</h3>:null
+                  )}
+                </div>
+              </div>
+            ) : null}
+            <div
+              className={`  ${styles.shadowbox} ${styles.comment_cont} col-md-4 col-lg-4 col-10`}
+            >
+              {UserInfo ? (
+                <>
+                  {" "}
+                  <div
+                    className={`${styles.shadowbox} row mx-auto mb-4 alligncenter mt-4 me-1 ms-1   ${styles.comment_cont} `}
+                  >
+                    <div className=" col-12 col-md-12 col-lg-12 col ">
+                      <div className="header row text-center">
+                        <h3>Review this product</h3>
+                        <hr className="mx-auto w-50 sp" />
+                        {error ? <h1>{error}</h1> : null}
+                      </div>
+
+                      <div className="formpart row d-flex justify-content-center">
+                        <form className="row" method="POST">
+                          <div className="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">
+                              <i
+                                className="icon fa fa-envelope"
+                                aria-hidden="true"
+                              ></i>
+                            </span>
+                            <input
+                              className="inputs"
+                              type="text"
+                              name="text"
+                              value={userreview}
+                              onChange={(e) => setuserreview(e.target.value)}
+                              class="form-control"
+                              autoComplete="off"
+                              placeholder="Your review"
+                              aria-label="Your review"
+                              aria-describedby="basic-addon1"
+                            />
+                          </div>
+
+                          <div className="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">
+                              <i
+                                className="icon fa fa-key"
+                                aria-hidden="true"
+                              ></i>
+                            </span>
+                            <input
+                              className="inputs"
+                              type="number"
+                              name="userrating"
+                              value={userrating}
+                              autoComplete="off"
+                              onChange={(e) => setuserrating(e.target.value)}
+                              class="form-control"
+                              placeholder="user rating"
+                              aria-label="password"
+                              aria-describedby="basic-addon1"
+                            />
+                          </div>
+
+                          <div className="input-group mb-3">
+                            <input
+                              className="inputs"
+                              type="submit"
+                              value="Post this review"
+                              onClick={postReview}
+                              class="form-control"
+                              placeholder="register"
+                              aria-label="register"
+                              aria-describedby="basic-addon1"
+                            />
+                          </div>
+                        </form>
+                      </div>
+                    </div>{" "}
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="container nocr text-center">
+                    <h3>
+                      <Link to={{ pathname: "/signin" }}>Sign-in</Link> To write
+                      the review!
+                    </h3>
+                  </div>
+                </>
+              )}
+            </div>
           </div>
         </div>
-      ) : null}
-        </div>
       )}{" "}
-     
     </>
   );
 };

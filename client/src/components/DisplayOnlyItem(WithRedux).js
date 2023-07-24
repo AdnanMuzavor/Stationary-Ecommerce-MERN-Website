@@ -82,7 +82,7 @@ const OnlyitemRedux = (props) => {
           <div className="container gallery mt-5 ">
             <hr className="w-50 mx-auto" />
             <div className="row  mx-auto d-flex justify-content-center mt-2 mb-2">
-              <div className="col-md-8 col-lg-8 col-12 ">
+              <div className="col-md-8 col-lg-8 col-6 ">
                 {/* Blog  number - 1 */}
 
                 <div className="container row blog ms-1" data-aos="fade-up">

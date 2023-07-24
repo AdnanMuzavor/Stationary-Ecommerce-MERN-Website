@@ -106,6 +106,21 @@ margin: 0.4rem !important;
 /*Comment container*/
 .comment_cont{
     margin: 0.8rem;
+    
+}
+.comment_cont2{
+    margin: 0.8rem;
+    overflow-y: scroll;
+    height: 20rem;
+}
+/*Review container*/
+.review_container{
+    overflow-x: scroll;
+    width: 50rem !important;
+}
+/*Background for comment*/
+.bgset{
+    background-color: bisque !important ;
 }
 /*Buttons below image*/
 .btnimg{

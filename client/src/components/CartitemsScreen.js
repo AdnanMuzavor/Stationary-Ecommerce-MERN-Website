@@ -48,25 +48,25 @@ const Cartscreen = (props) => {
                       return (
                         <>
                           <>
-                            <div className="col-6 col-md-12 col-lg-12 my-2 itmcont">
+                            <div className="cart_item_wrapper col-10 col-md-5 col-lg-5 my-2 itmcont mx-3">
                               <div className="row item d-flex flex-direction-column align-items-center">
-                                <div className=" text-center imgcart mx-auto col-10 col-md-4 col-lg-4">
+                                <div className=" text-center imgcart mx-auto col-3 col-md-4 col-lg-4">
                                   <img
                                     src={ele.image}
                                     alt=""
-                                    className="img-fluid "
+                                    className="img img-fluid "
                                   />
                                 </div>
-                                <div className=" text-center itemname mx-auto col-10 col-md-3 col-lg-2">
+                                <div className=" text-center itemname mx-auto col-3 col-md-3 col-lg-2">
                                   {ele.name}
                                 </div>
-                                <div className=" text-center price mx-auto col-5 col-md-1 col-lg-1">
+                                <div className=" text-center price mx-auto col-3 col-md-1 col-lg-1">
                                   Price: ₹{ele.price}
                                 </div>
-                                <div className=" text-center price mx-auto col-5 col-md-1 col-lg-1">
+                                <div className=" text-center price mx-auto col-3 col-md-1 col-lg-1">
                                   DPrice: ₹{ele.discntprce}
                                 </div>
-                                <div className=" text-center  qty mx-auto col-6 col-md-3 col-lg-2">
+                                <div className=" text-center  qty mx-auto col-3 col-md-3 col-lg-2 ">
                                   <div className="d-flex flex-direction-column mx-auto">
                                     <select
                                       value={ele.qty}
@@ -91,7 +91,7 @@ const Cartscreen = (props) => {
                                   </div>
                                 </div>
 
-                                <div className="row text-center my-2 mx-2 d-flex justify-content-center">
+                                <div className="row text-center my-2 mx-2 d-flex justify-content-center mb-3">
                                   <button
                                     className="btn col-10 col-lg-5 col-md-5 mx-2 "
                                     onClick={() => {
